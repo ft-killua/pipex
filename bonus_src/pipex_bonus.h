@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex_bonus_.h                                     :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:21:18 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 22:55:45 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 23:25:52 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
+# define CHILD 0
 # define WRITE 0
 # define READ 1
 # define RED "\033[1;31m"
@@ -39,7 +40,7 @@ void	ft_child(char *av, int *fd, char **envp, t_pipex *pipex);
 void	ft_parent(char *outfile, int *fd, char **envp, t_pipex *pipex);
 int		ft_open(char *av, int i);
 char	**ft_split(char *s, char c);
-void	ft_init(t_pipex *pipe, char **av, char **env);
+void	ft_init(t_pipex *pipex, char *cmd, char **env);
 char	*ft_get_paths_line(char **env);
 char	*ft_strjoin(char *s1, char *s2);
 void	ft_exe(char *path, t_pipex pipex, char **envp, int flag);

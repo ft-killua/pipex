@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:21:18 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 22:57:01 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 23:27:19 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <sys/wait.h>
 
+# define CHILD 0
 # define WRITE 0
 # define READ 1
 # define RED "\033[1;31m"

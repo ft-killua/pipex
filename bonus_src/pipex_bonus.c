@@ -6,45 +6,51 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 22:54:59 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 23:34:19 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-int	main(int ac, char **av, char **envp)
+void	new_pipe(char *cmd, char **envp)
 {
 	int		id;
 	int		pid;
-	t_pipex	pipex;
+	t_pipex pipex;
+	char	*path;
 
-	if (ac == 5)
+	id = pipe(pipex.fd);
+	if (id == -1)
+		exit(ft_error("pipe error"));
+	ft_init(&pipex, cmd, envp);
+	pid = fork();
+	if (pid < 0)
+		exit(ft_error("could'nt fork process !"));
+	if (pid == CHILD)
 	{
-		id = pipe(pipex.fd);
-		if (id == -1)
-			exit(ft_error("pipe error"));
-		ft_init(&pipex, av, envp);
-		pid = fork();
-		if (pid < 0)
-			exit(ft_error("could'nt fork process !"));
-		if (pid == 0)
-			ft_child(av[1], pipex.fd, envp, &pipex);
-		ft_parent(av[4], pipex.fd, envp, &pipex);
+		dup2(pipex.fd[1], STDOUT_FILENO);
+		close(pipex.fd[0]);
+		path = ft_find_path(&pipex, pipex.s_cmd1[0], envp);
+		ft_exe(path, pipex, envp, 0);
+	}
+	else
+	{
+		close(pipex.fd[1]);
+		dup2(pipex.fd[0], STDIN_FILENO);
 	}
 }
 
-// int main(int ac, char **av, char **envp)
-// {
-// 	t_pipex	pipex;
-// 	int i;
-// 	i = 0;
-// 	ft_init(&pipex, av, envp);
-// 	printf("paths : \n");
-// 	while (pipex.paths[i])
-// 	{
-// 		printf("%s\n", pipex.paths[i]);
-// 		i++;
-// 	}
-// 	printf("cmd 1 : %s\n", pipex.cmd1);
-// 	printf("cmd 2 : %s\n", pipex.cmd2);
-// }
+int	main(int ac, char **av, char **envp)
+{
+	int		i;
+
+	i = 2;
+	if (ac > 5)
+	{
+		while (i < ac - 2)
+		{
+			new_pipe(av[i], envp);
+			i++;
+		}
+	}
+}
