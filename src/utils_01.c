@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 22:56:54 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/05 00:37:51 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	ft_exe(char *path, t_pipex pipex, char **envp, int flag)
 	if (ret == -1)
 	{
 		ft_error("command not found: ");
-		exit(ft_error(splited_cmd[0]));
+		ft_error(splited_cmd[0]);
+		exit(ft_error("\n"));
 	}
 }
 
