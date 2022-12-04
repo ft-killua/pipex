@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 16:41:12 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 17:38:01 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ int	ft_error(char *message)
 	return(1);
 }
 
-int		ft_open(char *av, int x)
+int		ft_open(char *file, int x)
 {
 	int fd;
 
 	fd = 0;
-	if (x == WRITE)
-		fd = open(av, O_RDONLY, 0777);
-	else if (x == READ)
-		fd = open(av, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+	if (x == READ)
+		fd = open(file, O_RDONLY, 0777);
+	else if (x == WRITE)
+		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd < 0)
 		exit(ft_error("could'nt open the file !"));
 	return (fd);
@@ -63,7 +63,7 @@ void    ft_init(t_pipex *pipex, char **av, char **env)
 	pipex->paths = ft_split(pipex->paths_line, ':');
 }
 
-//close(file); //line 76
+//close(file); line = 76
 
 void    ft_child(char *infile, int *fd, char **envp, t_pipex *pipex)
 {

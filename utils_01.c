@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 02:19:49 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 17:37:11 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_parent(char *outfile, int *fd, char **envp, t_pipex *pipex)
 	int		file;
 	char	*path;
 
-	file = ft_open(outfile, READ);
+	file = ft_open(outfile, WRITE);
 	close(fd[1]);
 	dup2(file, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
