@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 02:31:56 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 02:49:51 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	ft_putstr_fd(char *str, int fd)
 		write(fd, str++, 1);
 }
 
-void	ft_error(char *message)
+int	ft_error(char *message)
 {
 	ft_putstr_fd(RED, 2);
-	ft_putstr_fd(message, 1);
+	ft_putstr_fd(message, 2);
 	ft_putstr_fd(RESET, 2);
-	exit(1);
+	return(1);
 }
 
 int		ft_open(char *av, int x)
@@ -36,7 +36,7 @@ int		ft_open(char *av, int x)
 	else if (x == READ)
 		fd = open(av, O_WRONLY | O_CREAT | O_TRUNC, 0777);
 	if (fd < 0)
-		ft_error("could'nt open the file !");
+		exit(ft_error("could'nt open the file !"));
 	return (fd);
 }
 
@@ -90,8 +90,7 @@ void    ft_exe(char *path, t_pipex pipex, char **envp, int flag)
 	ret = execve(path, splited_cmd, envp);
 	if (ret == -1)
 	{
-		ft_putstr_fd("command not found: ", 2);
-		ft_putstr_fd(splited_cmd[0], 2);
-		exit (0);
+		ft_error("command not found: ");
+		exit(ft_error(splited_cmd[0]));
 	}
 }

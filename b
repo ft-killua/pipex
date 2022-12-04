@@ -1,0 +1,13 @@
+drwxr-xr-x  13 hidhmmou  2019    442 Dec  4 02:49 .
+drwxr-xr-x  56 hidhmmou  2019   1904 Dec  3 20:07 ..
+drwxr-xr-x  12 hidhmmou  2019    408 Dec  4 02:32 .git
+drwxr-xr-x   3 hidhmmou  2019    102 Dec  2 23:39 .vscode
+-rw-r--r--   1 hidhmmou  2019   1236 Dec  3 22:08 Makefile
+-rw-r--r--   1 hidhmmou  2019      0 Dec  4 02:50 a
+-rw-r--r--   1 hidhmmou  2019      0 Dec  4 02:50 b
+-rw-r--r--   1 hidhmmou  2019   2761 Dec  4 01:52 ft_split.c
+-rwxr-xr-x   1 hidhmmou  2019  13632 Dec  4 02:49 pipex
+-rw-r--r--   1 hidhmmou  2019   1619 Dec  4 02:48 pipex.c
+-rw-r--r--   1 hidhmmou  2019   1781 Dec  4 02:48 pipex.h
+-rw-r--r--   1 hidhmmou  2019   2440 Dec  4 02:49 utils_00.c
+-rw-r--r--   1 hidhmmou  2019   1546 Dec  4 02:19 utils_01.c
