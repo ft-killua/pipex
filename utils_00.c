@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 19:15:24 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 19:27:25 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putstr_fd(char *str, int fd)
 {
+	if (!str)
+		return ;
 	while (*str)
 		write(fd, str++, 1);
 }
