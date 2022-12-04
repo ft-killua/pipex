@@ -6,11 +6,11 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 18:01:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 21:01:49 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 22:54:59 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 static int	ft_count_words(char const *str, char charset)
 {

@@ -6,11 +6,11 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:02:04 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 21:03:28 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 22:54:59 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	ft_strlen(char *s)
 {
