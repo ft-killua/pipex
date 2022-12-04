@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 02:49:51 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 16:41:12 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void    ft_init(t_pipex *pipex, char **av, char **env)
 	pipex->paths = ft_split(pipex->paths_line, ':');
 }
 
+//close(file); //line 76
+
 void    ft_child(char *infile, int *fd, char **envp, t_pipex *pipex)
 {
 	int 	file;
@@ -71,9 +73,7 @@ void    ft_child(char *infile, int *fd, char **envp, t_pipex *pipex)
 	file = ft_open(infile, READ);
 	close(fd[0]);
 	dup2(file, STDIN_FILENO);
-	//close(file);
 	dup2(fd[1], STDOUT_FILENO);
-	//close(fd[1]);
 	path = ft_find_path(pipex, pipex->s_cmd1[0], envp);
 	ft_exe(path, *pipex, envp, 0);
 }
