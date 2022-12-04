@@ -1,8 +1,8 @@
 SRC = src/pipex.c src/utils_00.c src/utils_01.c src/ft_split.c src/utils_main.c
 OBJ = $(SRC:.c=.o)
 
-BSRC = bonus_src/pipex.c bonus_src/utils_00.c bonus_src/utils_01.c \
-bonus_src/ft_split.c bonus_src/utils_main.c
+BSRC = bonus_src/pipex_bonus.c bonus_src/utils_bonus_00.c bonus_src/utils_bonus_01.c \
+bonus_src/ft_split_bonus.c bonus_src/utils_main_bonus.c
 BOBJ = $(BSRC:.c=.o)
 
 NAME = pipex
