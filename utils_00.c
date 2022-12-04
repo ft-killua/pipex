@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 02:25:13 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 02:31:56 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,8 @@ char	*ft_get_paths_line(char **env)
 
 void    ft_init(t_pipex *pipex, char **av, char **env)
 {
-	pipex->cmd1 = av[2];
-	pipex->s_cmd1 = ft_split(pipex->cmd1, ' ');
-	pipex->cmd2 = av[3];
-	pipex->s_cmd2 = ft_split(pipex->cmd2, ' ');
+	pipex->s_cmd1 = ft_split(av[2], ' ');
+	pipex->s_cmd2 = ft_split(av[3], ' ');
 	pipex->paths_line = ft_get_paths_line(env);
 	pipex->paths = ft_split(pipex->paths_line, ':');
 }
