@@ -35,7 +35,7 @@ clean:
 	@$(RM) $(OBJ) $(BOBJ)
 
 fclean: clean
-	@echo "$(RED)████████████████████     Game cleaned       ████████████████████$(RESET)"	
+	@echo "$(RED)████████████████████     PIPEX cleaned      ████████████████████$(RESET)"	
 	@$(RM) $(NAME)
 
 re: fclean all
