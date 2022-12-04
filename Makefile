@@ -18,7 +18,7 @@ all: $(NAME)
 
 bonus: $(BOBJ)
 	@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME)
-	@echo "$(BLUE)████████████████████Compiling Bonus is DONE ████████████████████$(RESET)"
+	@echo "$(RED)████████████████████Compiling Bonus is DONE ████████████████████$(RESET)"
 	@make clean
 
 $(NAME) :$(OBJ)
