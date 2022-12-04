@@ -6,11 +6,11 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 22:54:59 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 22:56:54 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex_bonus.h"
+#include "pipex.h"
 
 char	*ft_find_path(t_pipex *pipex, char *command, char **envp)
 {
