@@ -16,6 +16,11 @@ CFLAGES = -Wall -Wextra -Werror
 
 all: $(NAME)
 
+bonus: $(BOBJ)
+	@$(CC) $(CFLAGS) $(BOBJ) -o $(NAME)
+	@echo "$(BLUE)████████████████████Compiling Bonus is DONE ████████████████████$(RESET)"
+	@make clean
+
 $(NAME) :$(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 	@echo "$(BLUE)██████████████████████ Compiling is DONE ███████████████████████$(RESET)"
@@ -27,7 +32,7 @@ $(NAME) :$(OBJ)
 
 clean:
 	@echo "$(YELLOW)████████████████████  Object files cleaned  ████████████████████$(RESET)"
-	@$(RM) $(OBJ)
+	@$(RM) $(OBJ) $(BOBJ)
 
 fclean: clean
 	@echo "$(RED)████████████████████     Game cleaned       ████████████████████$(RESET)"	
