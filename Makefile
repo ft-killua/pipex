@@ -1,4 +1,4 @@
-SRC = pipex.c utils_00.c utils_01.c ft_split.c\
+SRC = pipex.c utils_00.c utils_01.c ft_split.c utils_main.c\
 
 OBJ = $(SRC:.c=.o)
 
