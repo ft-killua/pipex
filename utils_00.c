@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 19:27:25 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/04 20:59:36 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	ft_error(char *message)
 	ft_putstr_fd(RED, 2);
 	ft_putstr_fd(message, 2);
 	ft_putstr_fd(RESET, 2);
-	return(1);
+	return (1);
 }
 
-int		ft_open(char *file, int x)
+int	ft_open(char *file, int x)
 {
-	int fd;
+	int	fd;
 
 	fd = 0;
 	if (x == READ)
@@ -47,7 +47,7 @@ char	*ft_get_paths_line(char **env)
 	int		i;
 
 	i = 0;
-	while(env[i])
+	while (env[i])
 	{
 		if (env[i][0] == 'P' && env[i][1] == 'A'
 			&& env[i][2] == 'T' && env[i][3] == 'H')
@@ -57,42 +57,11 @@ char	*ft_get_paths_line(char **env)
 	return (NULL);
 }
 
-void    ft_init(t_pipex *pipex, char **av, char **env)
+void	ft_init(t_pipex *pipex, char **av, char **env)
 {
 	pipex->s_cmd1 = ft_split(av[2], ' ');
 	pipex->s_cmd2 = ft_split(av[3], ' ');
 	pipex->paths_line = ft_get_paths_line(env);
 	pipex->paths = ft_split(pipex->paths_line, ':');
 }
-
 //close(file); line = 76
-
-void    ft_child(char *infile, int *fd, char **envp, t_pipex *pipex)
-{
-	int 	file;
-	char	*path;
-
-	file = ft_open(infile, READ);
-	close(fd[0]);
-	dup2(file, STDIN_FILENO);
-	dup2(fd[1], STDOUT_FILENO);
-	path = ft_find_path(pipex, pipex->s_cmd1[0], envp);
-	ft_exe(path, *pipex, envp, 0);
-}
-
-void    ft_exe(char *path, t_pipex pipex, char **envp, int flag)
-{
-	char	**splited_cmd;
-	int		ret;
-
-	if (!flag)
-		splited_cmd = pipex.s_cmd1;
-	else
-		splited_cmd = pipex.s_cmd2;
-	ret = execve(path, splited_cmd, envp);
-	if (ret == -1)
-	{
-		ft_error("command not found: ");
-		exit(ft_error(splited_cmd[0]));
-	}
-}
