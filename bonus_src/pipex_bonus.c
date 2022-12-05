@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/05 15:40:59 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:00:57 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	new_pipe(char *cmd, char **envp)
 		dup2(pipex.fd[1], STDOUT_FILENO);
 		close(pipex.fd[0]);
 		path = ft_find_path(&pipex, pipex.s_cmd1[0], envp);
-		ft_exe(path, pipex, envp, 0);
+		ft_exe(path, pipex, envp);
 	}
 	else
 	{
@@ -59,6 +59,6 @@ int	main(int ac, char **av, char **envp)
 			new_pipe(av[i++], envp);
 		dup2(pipex.fd[1], STDOUT_FILENO);
 		path = ft_find_path(&pipex, pipex.s_cmd1[0], envp);
-		ft_exe(path, pipex, envp, 0);
+		ft_exe(path, pipex, envp);
 	}
 }
