@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/05 16:17:49 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:31:47 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	new_pipe(char *cmd, char **envp)
 		exit(ft_error("could'nt fork process !"));
 	if (pid == CHILD)
 	{
-		dup2(pipex.fd[1], STDOUT_FILENO);
 		close(pipex.fd[0]);
+		dup2(pipex.fd[1], STDOUT_FILENO);
 		path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);
 		ft_exe(path, pipex, envp);
 	}
