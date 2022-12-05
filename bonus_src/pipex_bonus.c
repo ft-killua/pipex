@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/05 00:37:21 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/05 15:40:59 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,17 @@ int	main(int ac, char **av, char **envp)
 	int		i;
 	char	*path;
 	t_pipex	pipex;
+	int		last_cmd;
 
-	if (ac > 5)
+	if (ac >= 5)
 	{
 		i = 2;
-		ft_init(&pipex, av[ac - 2], envp);
+		last_cmd = ac - 2;
+		ft_init(&pipex, av[last_cmd], envp);
 		pipex.fd[0] = ft_open(av[1], READ);
 		pipex.fd[1] = ft_open(av[ac - 1], WRITE);
 		dup2(pipex.fd[0], STDIN_FILENO);
-		while (i < ac - 2)
+		while (i < last_cmd)
 			new_pipe(av[i++], envp);
 		dup2(pipex.fd[1], STDOUT_FILENO);
 		path = ft_find_path(&pipex, pipex.s_cmd1[0], envp);

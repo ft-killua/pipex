@@ -1,1 +1,12 @@
-qqqqt riis aw ifas aaw
+total 64$
+drwxr-xr-x  11 hidhmmou  2019    374 Dec  5 15:58 .$
+drwxr-xr-x  60 hidhmmou  2019   2040 Dec  4 21:40 ..$
+drwxr-xr-x  13 hidhmmou  2019    442 Dec  5 11:51 .git$
+-rw-r--r--   1 hidhmmou  2019     18 Dec  4 23:04 .gitignore$
+-rw-r--r--   1 hidhmmou  2019   1674 Dec  5 00:08 Makefile$
+drwxr-xr-x   8 hidhmmou  2019    272 Dec  5 15:58 bonus_src$
+-rwxrwxrwx   1 hidhmmou  2019     35 Dec  5 00:38 commit$
+-rw-r--r--   1 hidhmmou  2019     22 Dec  5 11:51 in$
+-rw-r--r--   1 hidhmmou  2019      0 Dec  5 15:58 out$
+-rwxr-xr-x   1 hidhmmou  2019  13592 Dec  5 15:58 pipex$
+drwxr-xr-x   8 hidhmmou  2019    272 Dec  5 12:20 src$
