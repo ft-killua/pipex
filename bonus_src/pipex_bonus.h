@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:21:18 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/05 16:00:44 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/05 16:18:26 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@
 typedef struct s_pipex
 {
 	char	**env;
-	char	**s_cmd1;
-	char	**s_cmd2;
+	char	**splited_cmd;
 	int		fd[2];
 	char	*paths_line;
 	char	**paths;
