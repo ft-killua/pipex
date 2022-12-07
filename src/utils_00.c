@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/04 22:56:44 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/07 19:53:31 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_open(char *file, int x)
 	if (x == READ)
 		fd = open(file, O_RDONLY, 0777);
 	else if (x == WRITE)
-		fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0777);
+		fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, 0777);
 	if (fd < 0)
 		exit(ft_error("could'nt open the file !"));
 	return (fd);
