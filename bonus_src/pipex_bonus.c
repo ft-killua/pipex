@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/08 17:17:53 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:24:41 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,23 @@ void	ft_child(char *cmd, char **envp)
 	}
 }
 
-void	ft_exec_multi_pipes(int ac, char **av, char **envp)
+void	ft_exec_multi_pipes(int ac, char **av, char **envp, int flag)
 {
 	int		i;
 	char	*path;
 	t_pipex	pipex;
 	int		last_cmd;
-	
-	i = 2;
+
+	i = 2 + flag;
 	last_cmd = ac - 2;
 	ft_init(&pipex, av[last_cmd], envp);
-	pipex.fd[0] = ft_open(av[1], READ);
+	if (!flag)
+	{
+		pipex.fd[0] = ft_open(av[1], READ);
+		dup2(pipex.fd[0], STDIN_FILENO);
+		close(pipex.fd[0]);
+	}
 	pipex.fd[1] = ft_open(av[ac - 1], WRITE);
-	dup2(pipex.fd[0], STDIN_FILENO);
-	close(pipex.fd[0]);
 	while (i < last_cmd)
 		ft_child(av[i++], envp);
 	dup2(pipex.fd[1], STDOUT_FILENO);
@@ -63,8 +66,54 @@ void	ft_exec_multi_pipes(int ac, char **av, char **envp)
 	ft_exe(path, pipex, envp);
 }
 
+void	ft_heredoc(int ac, char *limiter)
+{
+	char	*line;
+	int		fd[2];
+	int		pid;
+
+	if (pipe(fd) == -1)
+		exit(ft_error("pipe error !"));
+	pid = fork();
+	if (pid == -1)
+		exit(ft_error("could'nt fork process !"));
+	if (pid == CHILD)
+	{
+		close(fd[0]);
+		while (1)
+		{
+			ft_putstr_fd("heredoc> ", 1);
+			get_next_line(&line);
+			if (!ft_strcmp(limiter, line))
+				exit(ft_error("EOF\n"));
+			ft_putstr_fd(line, fd[1]);
+			free(line);
+		}
+	}
+	else
+	{
+		close(fd[1]);
+		dup2(fd[0], STDIN_FILENO);
+		wait(NULL);
+	}
+}
+
 int	main(int ac, char **av, char **envp)
 {
+	int	flag;
+
+	flag = 0;
+	if (ac >= 6)
+	{
+		if (!ft_strcmp("here_doc", av[1]))
+		{
+			flag = 1;
+			ft_heredoc(ac, ft_strjoin(av[2],"\n"));
+		}
+	}
 	if (ac >= 5)
-		ft_exec_multi_pipes(ac, av, envp);
+	{
+		ft_exec_multi_pipes(ac, av, envp, flag);
+	}
+		
 }
