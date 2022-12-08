@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/07 19:56:44 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:25:21 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,16 @@ void	ft_child(char *cmd, char **envp)
 		exit(ft_error("could'nt fork process !"));
 	if (pid == CHILD)
 	{
-		close(pipex.fd[0]);
-		dup2(pipex.fd[1], STDOUT_FILENO);
-		path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);
-		ft_exe(path, pipex, envp);
+		close(pipex.fd[0]);//close read end of the pipe
+		dup2(pipex.fd[1], STDOUT_FILENO);//reroute standard output of the process to the write end of the pipe	
+		path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);//find the right path
+		ft_exe(path, pipex, envp);//execute commande
 	}
 	else
 	{
-		close(pipex.fd[1]);
-		dup2(pipex.fd[0], STDIN_FILENO);
-		waitpid(pid, NULL, 0);
+		close(pipex.fd[1]);//close write end of the pipe
+		dup2(pipex.fd[0], STDIN_FILENO);//reroute standard input of the process to the read end of the pipe
+		waitpid(pid, NULL, 0);//wait to the child process to end 
 	}
 }
 

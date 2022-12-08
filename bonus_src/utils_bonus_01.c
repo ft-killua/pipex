@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/06 23:02:36 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 16:28:07 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_find_path(t_pipex *pipex, char *command, char **envp)
 	char	*exec_cmd;
 
 	i = 0;
+	if (command[0] == '/')
+		return (command);
 	while (pipex->paths[i])
 	{
 		tmp = ft_strjoin(pipex->paths[i], "/");
@@ -29,7 +31,7 @@ char	*ft_find_path(t_pipex *pipex, char *command, char **envp)
 		free(exec_cmd);
 		i++;
 	}
-	return (command);
+	return (NULL);
 }
 
 void	ft_exe(char *path, t_pipex pipex, char **envp)

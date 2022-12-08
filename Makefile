@@ -23,7 +23,7 @@ bonus: $(BOBJ)
 
 $(NAME) :$(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
-	@echo "$(BLUE)██████████████████████ Compiling is DONE ███████████████████████$(RESET)"
+	@echo "$(GREEN)██████████████████████ Compiling is DONE ███████████████████████$(RESET)"
 	@make clean
 %.o:%.c
 	@echo "$(BLUE)██████████████████████     Compiling     ███████████████████████$(RESET)"
