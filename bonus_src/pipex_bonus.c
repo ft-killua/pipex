@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/08 23:33:19 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:42:11 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_child(char *cmd, char **envp)
 	if (pid == CHILD)
 	{
 		close(pipex.fd[0]);//close read end of the pipe
-		dup2(pipex.fd[1], STDOUT_FILENO);//reroute standard output of the process to the write end of the pipe	
+		dup2(pipex.fd[1], STDOUT_FILENO);//reroute standard output of the process to the write end of the pipe
 		path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);//find the right path
 		ft_exe(path, pipex, envp);//execute commande
 	}
@@ -66,9 +66,24 @@ void	ft_exec_multi_pipes(int ac, char **av, char **envp, int flag)
 	ft_exe(path, pipex, envp);
 }
 
-void	ft_heredoc(int ac, char *limiter)
+void	ft_read(int *fd, char *limiter)
 {
 	char	*line;
+
+	close(fd[0]);
+	while (1)
+	{
+		ft_putstr_fd("heredoc> ", 1);
+		get_next_line(&line);
+		if (!ft_strcmp(limiter, line))
+			exit(EXIT_SUCCESS);
+		ft_putstr_fd(line, fd[1]);
+		free(line);
+	}
+}
+
+void	ft_heredoc(int ac, char *limiter)
+{
 	int		fd[2];
 	int		pid;
 
@@ -78,18 +93,7 @@ void	ft_heredoc(int ac, char *limiter)
 	if (pid == -1)
 		exit(ft_error("could'nt fork process !"));
 	if (pid == CHILD)
-	{
-		close(fd[0]);
-		while (1)
-		{
-			ft_putstr_fd("heredoc> ", 1);
-			get_next_line(&line);
-			if (!ft_strcmp(limiter, line))
-				exit(EXIT_SUCCESS);
-			ft_putstr_fd(line, fd[1]);
-			free(line);
-		}
-	}
+		ft_read(fd, limiter);
 	else
 	{
 		close(fd[1]);
@@ -108,7 +112,7 @@ int	main(int ac, char **av, char **envp)
 		if (!ft_strcmp("here_doc", av[1]))
 		{
 			flag = 1;
-			ft_heredoc(ac, ft_strjoin(av[2],"\n"));
+			ft_heredoc(ac, ft_strjoin(av[2], "\n"));
 		}
 	}
 	if (ac >= 5)
