@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/08 23:26:45 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:33:19 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,5 @@ int	main(int ac, char **av, char **envp)
 	if (ac >= 5)
 	{
 		ft_exec_multi_pipes(ac, av, envp, flag);
-	}
-		
+	}	
 }
