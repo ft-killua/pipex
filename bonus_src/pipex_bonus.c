@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/08 23:24:41 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 23:26:45 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_heredoc(int ac, char *limiter)
 			ft_putstr_fd("heredoc> ", 1);
 			get_next_line(&line);
 			if (!ft_strcmp(limiter, line))
-				exit(ft_error("EOF\n"));
+				exit(EXIT_SUCCESS);
 			ft_putstr_fd(line, fd[1]);
 			free(line);
 		}
