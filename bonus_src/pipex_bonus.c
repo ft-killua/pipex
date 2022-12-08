@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/08 16:25:21 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:17:53 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,32 +36,35 @@ void	ft_child(char *cmd, char **envp)
 	else
 	{
 		close(pipex.fd[1]);//close write end of the pipe
-		dup2(pipex.fd[0], STDIN_FILENO);//reroute standard input of the process to the read end of the pipe
+		dup2(pipex.fd[0], STDIN_FILENO);//reroute standard input of the process (main one) to the read end of the pipe
 		waitpid(pid, NULL, 0);//wait to the child process to end 
 	}
 }
 
-int	main(int ac, char **av, char **envp)
+void	ft_exec_multi_pipes(int ac, char **av, char **envp)
 {
 	int		i;
 	char	*path;
 	t_pipex	pipex;
 	int		last_cmd;
+	
+	i = 2;
+	last_cmd = ac - 2;
+	ft_init(&pipex, av[last_cmd], envp);
+	pipex.fd[0] = ft_open(av[1], READ);
+	pipex.fd[1] = ft_open(av[ac - 1], WRITE);
+	dup2(pipex.fd[0], STDIN_FILENO);
+	close(pipex.fd[0]);
+	while (i < last_cmd)
+		ft_child(av[i++], envp);
+	dup2(pipex.fd[1], STDOUT_FILENO);
+	close(pipex.fd[1]);
+	path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);
+	ft_exe(path, pipex, envp);
+}
 
+int	main(int ac, char **av, char **envp)
+{
 	if (ac >= 5)
-	{
-		i = 2;
-		last_cmd = ac - 2;
-		ft_init(&pipex, av[last_cmd], envp);
-		pipex.fd[0] = ft_open(av[1], READ);
-		pipex.fd[1] = ft_open(av[ac - 1], WRITE);
-		dup2(pipex.fd[0], STDIN_FILENO);
-		close(pipex.fd[0]);
-		while (i < last_cmd)
-			ft_child(av[i++], envp);
-		dup2(pipex.fd[1], STDOUT_FILENO);
-		close(pipex.fd[1]);
-		path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);
-		ft_exe(path, pipex, envp);
-	}
+		ft_exec_multi_pipes(ac, av, envp);
 }
