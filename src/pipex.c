@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/09 02:58:50 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/09 03:08:44 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,19 +34,3 @@ int	main(int ac, char **av, char **envp)
 	else
 		exit(ft_error("usage : ./pipex infile cmd_1 cmd_2 outfile\n"));
 }
-
-// int main(int ac, char **av, char **envp)
-// {
-// 	t_pipex	pipex;
-// 	int i;
-// 	i = 0;
-// 	ft_init(&pipex, av, envp);
-// 	printf("paths : \n");
-// 	while (pipex.paths[i])
-// 	{
-// 		printf("%s\n", pipex.paths[i]);
-// 		i++;
-// 	}
-// 	printf("cmd 1 : %s\n", pipex.cmd1);
-// 	printf("cmd 2 : %s\n", pipex.cmd2);
-// }
