@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/07 19:53:31 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/09 03:04:54 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	ft_open(char *file, int x)
 	else if (x == WRITE)
 		fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, 0777);
 	if (fd < 0)
-		exit(ft_error("could'nt open the file !"));
+	{
+		ft_error(ft_strjoin("pipex: no such file or directory: ", file));
+		exit(ft_error("\n"));
+	}
 	return (fd);
 }
 
