@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/08 22:01:34 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/09 02:18:27 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int	ft_open(char *file, int x)
 	int	fd;
 
 	fd = 0;
-	if (x == READ || x == HERE_DOC)
+	if (x == READ)
 		fd = open(file, O_RDONLY, 0777);
-	if (x == HERE_DOC)
-		fd = open(file, O_CREAT | O_RDONLY, 0777);
+	else if (x == HERE_DOC)
+		fd = open(file, O_CREAT | O_WRONLY | O_APPEND, 0777);
 	else if (x == WRITE)
 		fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, 0777);
 	if (fd < 0)
