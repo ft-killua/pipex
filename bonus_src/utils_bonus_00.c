@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/09 03:05:16 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2022/12/12 23:37:55 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ int	ft_open(char *file, int x)
 
 	fd = 0;
 	if (x == READ)
-		fd = open(file, O_RDONLY, 0777);
+		fd = open(file, O_RDONLY);
 	else if (x == HERE_DOC)
-		fd = open(file, O_CREAT | O_WRONLY | O_APPEND, 0777);
+		fd = open(file, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	else if (x == WRITE)
-		fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, 0777);
+		fd = open(file, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	if (fd < 0)
 	{
 		ft_error(ft_strjoin("pipex: no such file or directory: ", file));
