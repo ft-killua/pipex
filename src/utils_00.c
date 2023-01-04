@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:32:56 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/12 23:38:24 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:48:54 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void	ft_init(t_pipex *pipex, char **av, char **env)
 	pipex->s_cmd2 = ft_split(av[3], ' ');
 	pipex->paths_line = ft_get_paths_line(env);
 	pipex->paths = ft_split(pipex->paths_line, ':');
+	//if (!pipex->paths)
+	//	exit(ft_error("PATH variable is unseted\n"));
 }
 //close(file); line = 76

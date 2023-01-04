@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2022/12/06 23:03:36 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/04 12:49:56 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_find_path(t_pipex *pipex, char *command, char **envp)
 	char	*exec_cmd;
 
 	i = 0;
-	while (pipex->paths[i])
+	while (pipex->paths && pipex->paths[i])
 	{
 		tmp = ft_strjoin(pipex->paths[i], "/");
 		exec_cmd = ft_strjoin(tmp, command);
@@ -41,6 +41,7 @@ void	ft_exe(char *path, t_pipex pipex, char **envp, int flag)
 		splited_cmd = pipex.s_cmd1;
 	else
 		splited_cmd = pipex.s_cmd2;
+	//exit(printf("path : %s\nsplited_cmd[0] : %s\n", path, splited_cmd[0]));
 	ret = execve(path, splited_cmd, envp);
 	if (ret == -1)
 	{
