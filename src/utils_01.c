@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2023/01/04 12:49:56 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/05 22:59:30 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,18 @@ void	ft_parent(char *outfile, int *fd, char **envp, t_pipex *pipex)
 {
 	int		file;
 	char	*path;
+	int		pid;
+	int		fdf[2];
 
+	pipe(fdf);
 	file = ft_open(outfile, WRITE);
 	close(fd[1]);
 	dup2(file, STDOUT_FILENO);
 	dup2(fd[0], STDIN_FILENO);
 	path = ft_find_path(pipex, pipex->s_cmd2[0], envp);
-	ft_exe(path, *pipex, envp, 1);
+	pid = fork();
+	if (pid == CHILD)
+		ft_exe(path, *pipex, envp, 1);
 }
 
 void	ft_child(char *infile, int *fd, char **envp, t_pipex *pipex)
