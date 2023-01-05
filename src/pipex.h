@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:21:18 by hidhmmou          #+#    #+#             */
-/*   Updated: 2023/01/04 00:41:45 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/05 23:33:02 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ typedef struct s_pipex
 }	t_pipex;
 
 int		ft_error(char *message);
-void	ft_child(char *av, int *fd, char **envp, t_pipex *pipex);
-void	ft_parent(char *outfile, int *fd, char **envp, t_pipex *pipex);
+void	ft_child1(char *av, int *fd, char **envp, t_pipex *pipex);
+void	ft_child2(char *outfile, int *fd, char **envp, t_pipex *pipex);
 int		ft_open(char *av, int i);
 char	**ft_split(char *s, char c);
 void	ft_init(t_pipex *pipe, char **av, char **env);

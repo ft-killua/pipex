@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 22:08:31 by hidhmmou          #+#    #+#             */
-/*   Updated: 2023/01/05 22:59:30 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/05 23:33:02 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_exe(char *path, t_pipex pipex, char **envp, int flag)
 	}
 }
 
-void	ft_parent(char *outfile, int *fd, char **envp, t_pipex *pipex)
+void	ft_child2(char *outfile, int *fd, char **envp, t_pipex *pipex)
 {
 	int		file;
 	char	*path;
@@ -69,7 +69,7 @@ void	ft_parent(char *outfile, int *fd, char **envp, t_pipex *pipex)
 		ft_exe(path, *pipex, envp, 1);
 }
 
-void	ft_child(char *infile, int *fd, char **envp, t_pipex *pipex)
+void	ft_child1(char *infile, int *fd, char **envp, t_pipex *pipex)
 {
 	int		file;
 	char	*path;

@@ -6,13 +6,13 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2023/01/03 15:36:30 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/05 23:33:02 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	ft_child(char *cmd, char **envp)
+void	ft_child1(char *cmd, char **envp)
 {
 	int		id;
 	int		pid;
@@ -61,7 +61,7 @@ void	ft_exec_multi_pipes(int ac, char **av, char **envp, int flag)
 	else
 		pipex.fd[1] = ft_open(av[ac - 1], HERE_DOC);
 	while (i < last_cmd)
-		ft_child(av[i++], envp);
+		ft_child1(av[i++], envp);
 	dup2(pipex.fd[1], STDOUT_FILENO);
 	close(pipex.fd[1]);
 	path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);
