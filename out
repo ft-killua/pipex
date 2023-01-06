@@ -1,1 +1,87 @@
-dapk
+)c.niam_slitu c.tilps_tf c.10_slitu c.00_slitu c.xepip ,/crs xiferpdda($ = CRS
+)o.=c.:CRS($ = JBO
+
+\ c.10_sunob_slitu c.00_sunob_slitu c.sunob_xepip ,/crs_sunob xiferpdda($ = CRSB
+)c.sunob_niam_slitu c.sunob_tilps_tf
+)o.=c.:CRSB($ = JBOB
+
+xepip = EMAN
+sunob_xepip = EMAN_B
+fr- mr = MR
+m13;1[330\ = DER
+m23;1[330\ = NEERG
+m33;1[330\ = WOLLEY
+m43;1[330\ = EULB
+m0[330\ = TESER
+rorreW- artxeW- llaW- = SEGALFC
+
+)EMAN($ :lla
+)EMAN_B($ :sunob
+)JBOB($ :)EMAN_B($
+)EMAN_B($ o- )JBOB($ )SGALFC($ )CC($@	
+")TESER($████████████████████ ENOD si sunoB gnilipmoC████████████████████)NEERG($" ohce@	
+naelc ekam@	
+
+)JBO($: )EMAN($
+)EMAN($ o- )JBO($ )SGALFC($ )CC($@	
+")TESER($███████████████████████ ENOD si gnilipmoC ██████████████████████)NEERG($" ohce@	
+naelc ekam@	
+	
+c.%:o.%
+")TESER($███████████████████████     gnilipmoC     ██████████████████████)EULB($" ohce@	
+")TESER($█ )EULB($}ENOD{)NEERG($t\t\t\t\t\t\t\r\:<$ )TESER($gnilipmoC)WOLLEY($ █)EULB($" ohce@	
+@$ o- <$ c- )SGALFC($ )CC($@	
+
+:naelc
+")TESER($████████████████████  denaelc selif tcejbO  ████████████████████)DER($" ohce@	
+)JBOB($ )JBO($ )MR($@	
+
+naelc :naelcf
+")TESER($████████████████████      denaelc XEPIP     ████████████████████)DER($" ohce@	
+)EMAN_B($ )EMAN($ )MR($@	
+
+lla naelcf :er
+
+er naelcf naelc sunob lla :YNOHP.
+tset si siht
+test
+haha
+my bad
+test
+haha
+Makefile
+bonus_src
+commit
+in
+out
+pipex
+pipex_bonus
+src
+Makefile
+bonus_src
+commit
+in
+out
+pipex
+pipex_bonus
+src
+this is hassan
+sad
+oooooooo
+man yaskono lba7ra
+alalalaal
+esrever
+total 104
+drwxr-xr-x  12 hidhmmou  2019    408 Jan  6 17:39 .
+drwxr-xr-x  14 hidhmmou  2019    476 Jan  4 23:18 ..
+drwxr-xr-x  13 hidhmmou  2019    442 Jan  6 12:53 .git
+-rw-r--r--   1 hidhmmou  2019     18 Dec  4 23:04 .gitignore
+-rw-r--r--   1 hidhmmou  2019   1702 Jan  4 20:15 Makefile
+drwxr-xr-x   8 hidhmmou  2019    272 Jan  6 17:39 bonus_src
+-rwxrwxrwx   1 hidhmmou  2019    124 Dec 13 12:48 commit
+-rw-r--r--   1 hidhmmou  2019     15 Jan  3 14:56 in
+-rw-r--r--   1 hidhmmou  2019   1918 Jan  6 17:45 out
+-rwxr-xr-x   1 hidhmmou  2019  13804 Jan  6 17:34 pipex
+-rwxr-xr-x   1 hidhmmou  2019  14100 Jan  6 17:39 pipex_bonus
+drwxr-xr-x   8 hidhmmou  2019    272 Jan  6 17:34 src
+tset si siht
