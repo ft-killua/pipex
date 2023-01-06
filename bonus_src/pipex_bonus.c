@@ -6,7 +6,7 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2023/01/06 17:53:03 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/06 17:54:32 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	ft_read(int *fd, char *limiter)
 	close(fd[0]);
 	while (1)
 	{
-		ft_putstr_fd("heredoc> ", 1);
+		ft_putstr_fd("pipe heredoc> ", 1);
 		get_next_line(&line);
 		if (!ft_strcmp(limiter, line))
 			exit(EXIT_SUCCESS);
