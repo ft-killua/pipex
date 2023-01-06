@@ -6,13 +6,13 @@
 /*   By: hidhmmou <hidhmmou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 23:23:30 by hidhmmou          #+#    #+#             */
-/*   Updated: 2023/01/05 23:33:02 by hidhmmou         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:51:57 by hidhmmou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
 
-void	ft_child1(char *cmd, char **envp)
+void	ft_child(char *cmd, char **envp)
 {
 	int		id;
 	int		pid;
@@ -37,7 +37,7 @@ void	ft_child1(char *cmd, char **envp)
 	{
 		close(pipex.fd[1]);
 		dup2(pipex.fd[0], STDIN_FILENO);
-		waitpid(pid, NULL, 0);
+		//waitpid(pid, NULL, 0);
 	}
 }
 
@@ -61,11 +61,13 @@ void	ft_exec_multi_pipes(int ac, char **av, char **envp, int flag)
 	else
 		pipex.fd[1] = ft_open(av[ac - 1], HERE_DOC);
 	while (i < last_cmd)
-		ft_child1(av[i++], envp);
+		ft_child(av[i++], envp);
 	dup2(pipex.fd[1], STDOUT_FILENO);
 	close(pipex.fd[1]);
 	path = ft_find_path(&pipex, pipex.splited_cmd[0], envp);
-	ft_exe(path, pipex, envp);
+	i = fork();
+	if (i == CHILD)
+		ft_exe(path, pipex, envp);
 }
 
 void	ft_read(int *fd, char *limiter)
@@ -107,6 +109,7 @@ void	ft_heredoc(int ac, char *limiter)
 int	main(int ac, char **av, char **envp)
 {
 	int	flag;
+	int	status;
 
 	flag = 0;
 	if (ac >= 6)
@@ -118,7 +121,12 @@ int	main(int ac, char **av, char **envp)
 		}
 	}
 	if (ac >= 5)
+	{
 		ft_exec_multi_pipes(ac, av, envp, flag);
+		while (wait(&status) != -1)
+			if (status != 0)
+				exit(status + 128);
+	}
 	if (ac < 5)
 		exit(ft_error("usage : ./pipex infile cmd_1 ... cmd_n outfile\n"));
 }
